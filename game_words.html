@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+	var gameWords = [
+		"фантазия",
+		"сатурн",
+		"дорога",
+		"университет",
+		"фонарь",
+		"колонки",
+	];
+
+	var gameWords = gameWords[Math.floor(Math.random() * gameWords.length)];
+
+	var gameArrey = [];
+	for (var i = 0; i < gameWords.length; i++) {
+		gameArrey[i] = "_";
+	}
+
+	var lostLetters = gameWords.length;
+	while (lostLetters) {
+		alert(gameArrey.join(" "));
+
+		var answer = prompt ("Угадайте букву");
+		if (answer === null) {
+			break;
+		} else if (answer.length !==1) {
+			alert("Пожалуйста, введите только одну букву!");
+		} else {
+			for (var w = 0; w < gameWords.length; w++) {
+				if (gameWords[w] === answer) {
+					gameArrey[w] = answer;
+					lostLetters--;
+
+				}
+			}
+		}
+	}
+	alert(gameArrey.join(" "));
+	alert("Победа! Было загадано слово -" + gameWords);
+	</script>
+	
+</body>
+</html>
